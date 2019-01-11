@@ -1,0 +1,10 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="active">Weather App</a>
+  <div *ngIf="navLinks">
+    <ul class="navbar-nav">
+      <li class="nav-item" *ngFor="let link of navLinks">
+        <a class="nav-link" [routerLink]="'/weather/' + link" routerLinkActive="active" >{{ link }} </a>
+      </li>
+    </ul>
+  </div>
+</nav>
