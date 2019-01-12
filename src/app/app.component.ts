@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { WEATHER_CITIES } from '../assets/weather.config';
+import { WEATHER_CITIES } from '../config/weather.config';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,4 @@ import { WEATHER_CITIES } from '../assets/weather.config';
 
 export class AppComponent {
   public citiesList: string[] = WEATHER_CITIES;
-
-  constructor() {}
-
 }

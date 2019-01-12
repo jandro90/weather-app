@@ -1,3 +1,7 @@
-<p>
-  home works!
-</p>
+<div class="container" *ngIf="cityWeathersInfoList.length > 0">
+  <div class="row">
+    <div *ngFor="let cityDetail of cityWeathersInfoList" class="col-4 cards-container">
+      <app-card [cityDetail]="cityDetail"></app-card>
+    </div>
+  </div>
+</div>
