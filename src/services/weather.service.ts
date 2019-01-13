@@ -4,9 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/map';
 
-import { API_BASE_URL, API_DATA, WEATHER_CITIES, API_TEMP_CELSIUS } from '../config/weather.config';
-import { API_VERSION, API_TYPE, API_APP_ID } from './../config/weather.config';
-import { IWeather } from '../interfaces/weather.interface';
+import {
+         API_BASE_URL, API_DATA, WEATHER_CITIES,
+         API_TEMP_CELSIUS, API_VERSION, API_TYPE,
+         API_APP_ID
+} from '../config/weather.config';
+
+import { IWeather, IWeatherInfoList, IWatherDataHistory, IWeatherCityInfo } from '../interfaces';
 
 @Injectable()
 export class WeatherService {
@@ -24,8 +28,7 @@ export class WeatherService {
       httpCalls.push(
         this.http.get(url + query).map(({weather, main}: IWeather) => {
           localStorage.setItem(city, JSON.stringify({weather, main, name: city}));
-          this.saveTempHistory(city, main.temp);
-          return {weather, main};
+          this.saveTempHistory(city, weather, main);
         })
       );
     });
@@ -33,19 +36,21 @@ export class WeatherService {
     return Observable.forkJoin(httpCalls);
   }
 
-  private saveTempHistory(city: string, currentTemp: number) {
+  private saveTempHistory(city: string, weather: object, main: object) {
     const currentHistory = JSON.parse(localStorage.getItem(`${city}DataHistory`));
-    const currentDate = new Date();
+    // need convert new date to string, because json parse does not convert the date correctly if it is in Date format
+    const currentDate = `${new Date()}`;
 
     if (!currentHistory) {
-      localStorage.setItem(`${city}DataHistory`, JSON.stringify({history: [{currentTemp, currentDate}]}));
+      localStorage.setItem(`${city}DataHistory`, JSON.stringify({history: [{weather, main, currentDate}]}));
     } else {
-      const newTempData = [...currentHistory.history, {currentTemp, currentDate}];
+
+      const newTempData = [...currentHistory.history, {weather, main, currentDate}];
       localStorage.setItem(`${city}DataHistory`, JSON.stringify({history: newTempData}));
     }
   }
 
-  public getWeatherInfoCities() {
+  public getWeatherInfoCities(): IWeatherInfoList[] {
     const weatherListInfo = [];
 
     this.citiesList.forEach((city) => {
@@ -56,11 +61,11 @@ export class WeatherService {
     return weatherListInfo;
   }
 
-  public getHistoryData(city: string) {
+  public getHistoryData(city: string): IWatherDataHistory {
     return JSON.parse(localStorage.getItem(`${city}DataHistory`));
   }
 
-  public getCityWeather(city: string) {
+  public getCityWeather(city: string): IWeatherCityInfo {
     return JSON.parse(localStorage.getItem(city));
   }
 }

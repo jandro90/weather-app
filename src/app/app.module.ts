@@ -6,10 +6,13 @@ import { RouterModule } from '@angular/router';
 import { routes } from '../routes';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent, CardComponent, CardDetailComponent } from '../components';
+import { NavbarComponent, CardComponent, CardDetailComponent, TableDetailComponent } from '../components';
+
 import { WeatherCityInfoComponent, HomeComponent } from '../views';
 
 import { WeatherService } from '../services';
+
+import { CustomDatePipe } from '../pipes';
 
 @NgModule({
   imports: [
@@ -23,7 +26,9 @@ import { WeatherService } from '../services';
     CardComponent,
     HomeComponent,
     WeatherCityInfoComponent,
-    CardDetailComponent
+    CardDetailComponent,
+    TableDetailComponent,
+    CustomDatePipe,
   ],
   providers: [
     WeatherService

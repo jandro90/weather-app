@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 
 import { WeatherService } from '../../services';
 
+import { UPDATE_TIME } from '../../config/weather.config';
+
+import { IWeatherInfoList } from '../../interfaces';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,7 +13,7 @@ import { WeatherService } from '../../services';
 })
 
 export class HomeComponent {
-  public cityWeathersInfoList = [];
+  public cityWeathersInfoList: IWeatherInfoList[] = [];
 
   constructor(private weatherService: WeatherService) {
     this.checkIsFirstTime();
@@ -38,6 +42,6 @@ export class HomeComponent {
   private updateWeatherData() {
     setInterval(() => {
       this.refreshData();
-    }, (3 * 60000) );
+    }, (UPDATE_TIME) );
   }
 }

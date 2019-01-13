@@ -9,3 +9,6 @@ export const API_TEMP_CELSIUS = 'units=metric';
 
 export const API_APP_ID = 'APPID=8f3ee178b49ff56fa0a936d9bec94694';
 
+// UPDATE DATA FREQUENCY
+export const UPDATE_TIME = 3 * 60000;  // 3 minutes
+
