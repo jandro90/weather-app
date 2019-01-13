@@ -1,0 +1,12 @@
+<div class="card border-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header">
+    <p><i class="fas fa-temperature-low"></i>Max: {{data.main.temp_max}} ºC</p>
+    <p><i class="fas fa-temperature-low"></i>Min: {{data.main.temp_min}} ºC</p>
+  </div>
+  <div class="card-body text-dark">
+    <h5 class="card-title">{{data.name | titlecase }}</h5>
+    <p class="card-text"><i class="fas fa-temperature-low"></i> Temp Actual: {{data.main.temp}} ºC</p>
+    <img [src]="'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png'" alt="temperature">
+  </div>
+</div>
+

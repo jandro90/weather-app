@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { routes } from '../routes';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent, CardComponent } from '../components';
+import { NavbarComponent, CardComponent, CardDetailComponent } from '../components';
 import { WeatherCityInfoComponent, HomeComponent } from '../views';
 
 import { WeatherService } from '../services';
@@ -22,7 +22,8 @@ import { WeatherService } from '../services';
     NavbarComponent,
     CardComponent,
     HomeComponent,
-    WeatherCityInfoComponent
+    WeatherCityInfoComponent,
+    CardDetailComponent
   ],
   providers: [
     WeatherService

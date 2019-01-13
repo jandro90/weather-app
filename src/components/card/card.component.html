@@ -1,7 +1,7 @@
 <div class="card">
   <img class="card-img-top" [src]="'assets/images/' +  cityDetail.name + '.png'" [alt]="cityDetail.name">
   <div class="card-body">
-    <h5 class="card-title">{{cityDetail.name}}</h5>
+    <h5 class="card-title">{{cityDetail.name | titlecase }}</h5>
     <p class="card-text"><i class="fas fa-temperature-low"></i> {{cityDetail.main.temp }} ºC</p>
     <a [routerLink]="['/weather/' + cityDetail.name]" class="btn btn-primary">More info</a>
   </div>

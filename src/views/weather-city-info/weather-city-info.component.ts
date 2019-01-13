@@ -10,12 +10,13 @@ import { WeatherService } from '../../services/weather.service';
 })
 export class WeatherCityInfoComponent {
   public dataHistory;
-  public data;
+  public dataWeather;
 
   constructor(private weatherService: WeatherService,  private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(({city}) => {
       this.dataHistory = this.weatherService.getHistoryData(city);
-      this.data = this.weatherService.getCityWeather(city);
+      this.dataWeather = this.weatherService.getCityWeather(city);
+      console.log(this.dataWeather);
     });
   }
 
