@@ -1,27 +1,21 @@
-# Weather
+# - Project
+A weather application created with Angular version 4.4.7
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.10.
+# - Features
 
-## Development server
+  - You can add as many cities as you want, they will be added automatically to both the navigation bar and the home page. Go to the src / config / weather.config.ts directory for more information.
+  - All the views of the application reload the data automatically every 3 minutes. (can configure these minutes in the configuration file)
+  - Store new information in local storage
+  - Collect a weather history information
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Note: If you want to delete the information from the application, you must remove the cache from your browser 
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# - Quick Start
 
-## Build
+clone this project and you go to the root directory and execute these commands.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```sh
+$ npm install
+$ ng serve -o
+```

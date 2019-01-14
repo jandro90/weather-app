@@ -1,4 +1,8 @@
-<div class="container" *ngIf="cityWeathersInfoList.length > 0">
+<div class="loader-container" *ngIf="isLoading">
+  <i class="fas fa-spinner fa-spin"></i>
+</div>
+
+<div class="container" *ngIf="cityWeathersInfoList.length > 0 && !isLoading">
   <div class="row">
     <div *ngFor="let cityDetail of cityWeathersInfoList" class="col-4 cards-container">
       <app-card [cityDetail]="cityDetail"></app-card>

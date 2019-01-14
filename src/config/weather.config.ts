@@ -1,3 +1,6 @@
+// Remember that you can add cities easily,
+// you just have to put the name of anny city in the array and
+// go to the assets / images folder and add a photo of the city in PNG format, dont forget clean browser cache
 export const WEATHER_CITIES = ['barcelona', 'london', 'washington'];
 
 // API CONFIG

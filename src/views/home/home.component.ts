@@ -14,6 +14,7 @@ import { IWeatherInfoList } from '../../interfaces';
 
 export class HomeComponent {
   public cityWeathersInfoList: IWeatherInfoList[] = [];
+  public isLoading: boolean;
 
   constructor(private weatherService: WeatherService) {
     this.checkIsFirstTime();
@@ -29,6 +30,7 @@ export class HomeComponent {
   }
 
   private initialApp() {
+    this.isLoading = true;
     localStorage.setItem('isFirstTime', JSON.stringify(true));
     this.refreshData();
   }
@@ -36,7 +38,7 @@ export class HomeComponent {
   private refreshData() {
     this.weatherService.setWeathersInStorage().subscribe(() => {
       this.cityWeathersInfoList = this.weatherService.getWeatherInfoCities();
-    });
+    }).add(() => this.isLoading = false);
   }
 
   private updateWeatherData() {
